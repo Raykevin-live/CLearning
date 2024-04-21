@@ -1,0 +1,36 @@
+# Project: Project_2024_4_21_0_MineSweeper
+# Makefile created by Red Panda C++ 2.20
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = Project_2024_4_21_0_MineSweeper_private.res
+OBJ      = game.o test.o $(RES)
+LINKOBJ  = game.o test.o Project_2024_4_21_0_MineSweeper_private.res
+CLEANOBJ  =  game.o test.o  Project_2024_4_21_0_MineSweeper_private.res Project_2024_4_21_0_MineSweeper.exe
+LIBS     =  -fstack-protector-strong
+INCS     =  
+CXXINCS  =  
+BIN      = Project_2024_4_21_0_MineSweeper.exe
+CXXFLAGS = $(CXXINCS)  -g3 -pipe -Wall -D__DEBUG__
+CFLAGS   = $(INCS)  -g3 -pipe -Wall -D__DEBUG__
+RM       = del /q /f
+WINDRESFLAGS  = 
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	-$(RM) $(CLEANOBJ) > NUL 2>&1
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+game.o: game.c game.h
+
+test.o: test.c
+
+Project_2024_4_21_0_MineSweeper_private.res: Project_2024_4_21_0_MineSweeper_private.rc 
+	$(WINDRES) -i Project_2024_4_21_0_MineSweeper_private.rc --input-format=rc -o Project_2024_4_21_0_MineSweeper_private.res -O coff $(WINDRESFLAGS) 
+
