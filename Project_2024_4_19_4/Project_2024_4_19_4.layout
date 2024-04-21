@@ -1,0 +1,30 @@
+[
+    {
+        "caretX": 6,
+        "caretY": 1,
+        "filename": "D:/redpanda_code/Project_2024_4_19_4/add.h",
+        "focused": false,
+        "isOpen": false,
+        "leftChar": 1,
+        "topLine": 1
+    },
+    {
+        "caretX": 18,
+        "caretY": 14,
+        "filename": "D:/redpanda_code/Project_2024_4_19_4/recursion.cpp",
+        "focused": true,
+        "isOpen": true,
+        "leftChar": 1,
+        "order": 0,
+        "topLine": 10
+    },
+    {
+        "caretX": 1,
+        "caretY": 2,
+        "filename": "D:/redpanda_code/Project_2024_4_19_4/add.cpp",
+        "focused": false,
+        "isOpen": false,
+        "leftChar": 1,
+        "topLine": 1
+    }
+]
