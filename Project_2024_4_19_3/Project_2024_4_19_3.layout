@@ -1,0 +1,30 @@
+[
+    {
+        "caretX": 29,
+        "caretY": 2,
+        "filename": "D:/redpanda_code/Project_2024_4_19_3/main.c",
+        "focused": true,
+        "isOpen": true,
+        "leftChar": 1,
+        "order": 0,
+        "topLine": 1
+    },
+    {
+        "caretX": 2,
+        "caretY": 5,
+        "filename": "D:/redpanda_code/Project_2024_4_19_3/add.c",
+        "focused": false,
+        "isOpen": false,
+        "leftChar": 1,
+        "topLine": 1
+    },
+    {
+        "caretX": 16,
+        "caretY": 2,
+        "filename": "D:/redpanda_code/Project_2024_4_19_3/add.h",
+        "focused": false,
+        "isOpen": false,
+        "leftChar": 1,
+        "topLine": 1
+    }
+]
