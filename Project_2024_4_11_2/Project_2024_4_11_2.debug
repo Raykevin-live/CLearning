@@ -1,0 +1,15 @@
+{
+    "breakpoints": [
+    ],
+    "timestamp": "1713084208687",
+    "watchvars": [
+        {
+            "expression": "arr1",
+            "timestamp": "1712848977490"
+        },
+        {
+            "expression": "arr2",
+            "timestamp": "1712849012498"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "breakpoints": [
+        {
+            "breakpoint_type": 0,
+            "condition": "",
+            "enabled": true,
+            "filename": "add.c",
+            "line": 1,
+            "timestamp": "1713237152768"
+        }
+    ],
+    "timestamp": "1713240568520",
+    "watchvars": [
+    ]
+}

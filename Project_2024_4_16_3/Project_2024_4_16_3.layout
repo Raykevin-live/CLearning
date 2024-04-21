@@ -1,0 +1,21 @@
+[
+    {
+        "caretX": 2,
+        "caretY": 59,
+        "filename": "D:/redpanda_code/Project_2024_4_16_3/test.cpp",
+        "focused": false,
+        "isOpen": false,
+        "leftChar": 1,
+        "topLine": 52
+    },
+    {
+        "caretX": 4,
+        "caretY": 54,
+        "filename": "D:/redpanda_code/Project_2024_4_16_3/main.cpp",
+        "focused": true,
+        "isOpen": true,
+        "leftChar": 1,
+        "order": 0,
+        "topLine": 43
+    }
+]
