@@ -1,2 +1,2 @@
-# Raykevin-s-learning-code
-This is a learning repository.
+# Raykevin-s-learning-
+This is a repository created when I was a beginner
