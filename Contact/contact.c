@@ -157,20 +157,16 @@ void ModifyContact(struct Contact* ps)
 	}
 }
 
-static int cmp_by_name(const void* name1, const void* name2)
+static int cmp_by_name(const void* pn1, const void* pn2)
 {
-	int i = 1;
-	struct Contact* con1 = (struct Contact*)name1;
-	struct Contact* con2 = (struct Contact*)name2;
-	for(i =1; i< 4; i++)
-	{
-		return strcmp((con1->data[i].name), (con2->data[i].name));
-	}
 	
+	return strcmp(((struct PeoInfo*)pn1)->name, ((struct PeoInfo*)pn2)->name);	
 }
 
 void SortContact(struct Contact* ps)
 {
-	qsort(ps, ps->size, sizeof(struct Contact), cmp_by_name);
+	qsort(ps->data, ps->size, sizeof(ps->data[0]), cmp_by_name);
 	printf("按名字排序完成\n");
 }
+
+
