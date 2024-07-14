@@ -1,0 +1,36 @@
+# Project: Contact_Dynamic
+# Makefile created by Red Panda C++ 2.20
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = Contact_Dynamic_private.res
+OBJ      = test.o contact.o $(RES)
+LINKOBJ  = test.o contact.o Contact_Dynamic_private.res
+CLEANOBJ  =  test.o contact.o  Contact_Dynamic_private.res Contact_Dynamic.exe
+LIBS     =  -fstack-protector-strong
+INCS     =  
+CXXINCS  =  
+BIN      = Contact_Dynamic.exe
+CXXFLAGS = $(CXXINCS)  -g3 -pipe -Wall -D__DEBUG__
+CFLAGS   = $(INCS)  -g3 -pipe -Wall -D__DEBUG__
+RM       = del /q /f
+WINDRESFLAGS  = 
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	-$(RM) $(CLEANOBJ) > NUL 2>&1
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+test.o: test.c contact.h
+
+contact.o: contact.c contact.h
+
+Contact_Dynamic_private.res: Contact_Dynamic_private.rc 
+	$(WINDRES) -i Contact_Dynamic_private.rc --input-format=rc -o Contact_Dynamic_private.res -O coff $(WINDRESFLAGS) 
+

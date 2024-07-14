@@ -15,7 +15,7 @@
 int main()
 {
 	char arr[10] = " ";
-	memset(arr, '#', 10);
+	memset(arr, '#', 9);
 	
 	printf("%s\n", arr);
 	

@@ -30,25 +30,25 @@ struct Test
 //}
  
 
-//int main()
-//{
-//	int a[4] = {1, 2, 3, 4};
-//	int* ptr1 = (int*)(&a + 1);
-//	int* ptr2 = (int*)((int)a + 1);
-//	
-//	printf("%x,%x", ptr1[-1], *ptr2);
-//
-//	return 0;
-//}
-
-
 int main()
 {
-	int a[3][2] = {(0, 1), (2, 3), (4, 5)};
-	int* p;
-	p = a[0];
-	printf("%d", p[0]);
+	int a[4] = {1, 2, 3, 4};
+	int* ptr1 = (int*)(&a + 1);
+	int* ptr2 = (int*)((int)a + 1);
+	
+	printf("%x,%x", ptr1[-1], *ptr2);
+
 	return 0;
 }
+
+
+//int main()
+//{
+//	int a[3][2] = {(0, 1), (2, 3), (4, 5)};
+//	int* p;
+//	p = a[0];
+//	printf("%d", p[0]);
+//	return 0;
+//}
 
 

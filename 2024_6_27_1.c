@@ -11,8 +11,8 @@ void* my_memcpy(void* dest, const void* src, size_t num)
 	while(num--)
 	{
 		*(char*)dest = *(char*)src;//一个一个字节拷贝
-		++(char*)dest;
-		++(char*)src;
+	dest = (char*)dest+ 1;
+	src = (char*)src + 1;
 	}
 	return ret;
 }
@@ -28,8 +28,8 @@ void* my_memmove(void* dest, const void* src, size_t num)
 		while(num--)
 		{
 			*(char*)dest = *(char*)src;//一个一个字节拷贝
-			++(char*)dest;
-			++(char*)src;//++优先级高，所以改成前置++，先转换再++.
+			dest = (char*)dest + 1;
+			src = (char*)src + 1;//++优先级高，所以改成前置++，先转换再++.
 		}
 	}
 	else

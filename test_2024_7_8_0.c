@@ -56,7 +56,7 @@
 //	return 0;
 //}
 
-int main(
+int main()
 {
 	int* p = (int*)malloc(20);
 	if(p == NULL)

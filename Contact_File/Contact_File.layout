@@ -1,0 +1,32 @@
+[
+    {
+        "caretX": 37,
+        "caretY": 56,
+        "filename": "D:/redpanda_code/Contact_File/contact.h",
+        "focused": false,
+        "isOpen": true,
+        "leftChar": 1,
+        "order": 2,
+        "topLine": 46
+    },
+    {
+        "caretX": 2,
+        "caretY": 246,
+        "filename": "D:/redpanda_code/Contact_File/contact.c",
+        "focused": true,
+        "isOpen": true,
+        "leftChar": 1,
+        "order": 0,
+        "topLine": 230
+    },
+    {
+        "caretX": 13,
+        "caretY": 53,
+        "filename": "D:/redpanda_code/Contact_File/test.c",
+        "focused": false,
+        "isOpen": true,
+        "leftChar": 1,
+        "order": 1,
+        "topLine": 55
+    }
+]
