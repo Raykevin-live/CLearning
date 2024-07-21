@@ -27,7 +27,17 @@ LTNode* LTInit()
 
 void LTDestroy(LTNode* phead)
 {
+	assert(phead);
 
+	LTNode* cur = phead->next;
+	while (cur != phead)
+	{
+		LTNode* next = cur->next;
+		free(cur);
+		cur = next;
+	}
+	free(phead);
+	phead = NULL;
 }
 
 void LTPrint(LTNode* phead)
@@ -101,6 +111,8 @@ void LTPopFront(LTNode* phead)
 	assert(phead);
 	assert(!LTEmpty(phead));
 
+	LTErase(phead->next);
+
 }
 
 //pos Ö®Ç°²åÈë
@@ -121,5 +133,30 @@ void LTInsert(LTNode* pos, LTDataType x)
 
 void LTErase(LTNode* pos)
 {
+	assert(pos);
 
+	LTNode* p = pos->prev;
+	LTNode* n = pos->next;
+
+	p->next = n;
+	n->prev = p;
+	free(pos);
+	//pos = NULL;
+}
+
+LTNode* LTFind(LTNode* phead, LTDataType x)
+{
+	assert(phead);
+
+	LTNode* cur = phead->next;
+	while (cur != phead)
+	{
+		if (cur->data == x)
+		{
+			return cur;
+		}
+
+		cur = cur->next;
+	}
+	return NULL;
 }
