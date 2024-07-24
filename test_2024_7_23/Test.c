@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <math.h>
 
 
 //int main() {
@@ -75,23 +75,64 @@
 //}
 
 //最大公约数
+//int main()
+//{
+//	int numM = 0, numN = 0;
+//	int rmd = 0;
+//
+//	scanf("%d%d", &numM, &numN);
+//	if (numM < numN)
+//	{
+//		int tmp = numM;
+//		numM = numN;
+//		numN = tmp;
+//	}
+//	while (numM % numN != 0)
+//	{
+//		rmd = numM % numN;
+//		numM = numN;
+//		numN = rmd;
+//	}
+//	printf("最大公约数为:>%d\n", numN);
+//}
+
+
+//int is_leap(int year)
+//{
+//	if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0))
+//	{
+//		return 1;
+//	}
+//	return 0;
+//
+//}
+
+int is_prime(int num)
+{
+	int i = 0;
+	if (num % 2 == 0)
+	{
+		return 0;
+	}
+	for (i = 2; i <= sqrt(num); i++)
+	{
+		if (num % i == 0)
+		{
+			return 0;
+		}
+	}
+	return 1;
+}
+
 int main()
 {
-	int numM = 0, numN = 0;
-	int rmd = 0;
-
-	scanf("%d%d", &numM, &numN);
-	if (numM < numN)
+	for (int i = 100; i <= 200; i++)
 	{
-		int tmp = numM;
-		numM = numN;
-		numN = tmp;
+		if (is_prime(i) == 1)
+		{
+			printf("%d ", i);
+		}
 	}
-	while (numM % numN != 0)
-	{
-		rmd = numM % numN;
-		numM = numN;
-		numN = rmd;
-	}
-	printf("最大公约数为:>%d\n", numN);
+	printf("\n");
+	return 0;
 }
