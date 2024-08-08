@@ -16,6 +16,14 @@ void HeapInit(HP* php)
 	php->capacity = 4;
 }
 
+void HeapDestory(HP* php)
+{
+	free(php->a);
+	php->a = NULL;
+	php->size = 0;
+	php->capacity = 0;
+}
+
 void Swap(HPDataType* p1, HPDataType* p2)
 {
 	HPDataType tmp = *p1;
@@ -23,7 +31,8 @@ void Swap(HPDataType* p1, HPDataType* p2)
 	*p2 = tmp;
 }
 
-void AdjustUP(HPDataType* a, int child)
+//除了child,其他地方构成大堆/小堆
+void ADjustUp(HPDataType* a, int child)
 {
 	int parent = (child - 1) / 2;
 	//不建议while(parent>=0) 因为parent到不了-1，但是也可以跑，因为后面if条件不满足
@@ -39,7 +48,6 @@ void AdjustUP(HPDataType* a, int child)
 		{
 			break;
 		}
-
 	}
 }
 
@@ -62,10 +70,64 @@ void HeapPush(HP* php, HPDataType x)
 	php->a[php->size] = x;
 	php->size++;
 
-	AdjustUP(php->a, php->size - 1);
+	ADjustUp(php->a, php->size - 1);
+}
+
+//左右子树都是大堆或者小堆
+void ADjustDown(HPDataType* a, int sz, int parent)
+{
+	int child = parent * 2 + 1;
+	while (child < sz)
+	{
+		//选出左右孩子中大的一个
+		//这里child+1的判断在前，不要先访问再判断
+		if (child+1<sz && a[child + 1] > a[child])
+		{
+			//这地方可能会越界
+			++child;
+		}
+
+		if (a[child] > a[parent])
+		{
+			//Swap(&a[child], a[a[parent]]);  //你的这里写的就是有问题的哦
+			Swap(&a[child], &a[parent]);
+			parent = child;
+			child = parent * 2 + 1;
+		}
+		else
+		{
+			break;
+		}
+	}
 }
 
 void HeapPop(HP* php)
 {
+	assert(php);
+	assert(!HeapEmpty(php));
 
+	Swap(&php->a[0], &php->a[php->size-1]);
+	php->size--;
+
+	ADjustDown(php->a, php->size, 0);
+}
+
+HPDataType HeapTop(HP* php)
+{
+	assert(php);
+
+	return php->a[0];
+}
+
+bool HeapEmpty(HP* php)
+{
+	assert(php);
+
+	return php->size == 0;
+}
+
+int HeapSize(HP* php)
+{
+	assert(php);
+	return php->size;
 }
