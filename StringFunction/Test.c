@@ -75,13 +75,35 @@ void test5()
 	}
 }
 
+void test6()
+{
+	char str1[] = "xxxxxxxxx";
+	char str2[] = "abc";
+	char* ret = MyStrncpy(str1, str2, 5);
+	printf("%s\n", ret);
+}
+
+void test7()
+{
+	char str1[30] = "xxxxxxxxx";
+	char str2[30] = "abcdefg";
+	/*char* ret = MyStrncat(str1, str2, 5);
+	printf("%s\n", ret);*/
+
+	char* ret = MyStrncat(str2, str2, 10);
+	printf("%s\n", ret);
+
+}
+
 int main()
 {	
-	//test1();
-	//test2();
-	//test3();
-	//test4();
-	test5();
+	/*test1();
+	test2();
+	test3();
+	test4();
+	test5();*/
+	//test6();
+	test7();
 
 	return 0;
 }

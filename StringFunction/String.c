@@ -128,3 +128,38 @@ const char* MyStrstr(const char* str1, const char* str2)
 	return NULL;
 }
 
+//strncpy º¯Êý
+char* MyStrncpy(char* dest, const char* src, size_t num)
+{
+	assert(dest && src);
+
+	char* ret = dest;
+	while (num-- && (*dest++ = *src++))
+	{
+		;
+	}
+
+	return ret;
+}
+
+//strncat º¯Êý
+char* MyStrncat(char* dest, const char* src, size_t num)
+{
+	assert(dest && src);
+
+	char* ret = dest;
+	while (*dest != '\0')
+	{
+		dest++;
+	}
+
+	while (num-- && (*dest++ = *src++))
+	{
+		;
+	}
+	
+	//²¹'\0'
+	*dest = '\0';
+
+	return ret;
+}
