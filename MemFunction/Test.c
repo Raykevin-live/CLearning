@@ -15,10 +15,23 @@ void test2()
 	memmove(arr + 2, arr + 3, 4 * sizeof(int));
 }
 
+void test3()
+{
+	int arr[] = { 1,2, 3, 4,5, 6, 7, 8 ,9, 10 };
+	MyMemmove(arr , arr + 3, 4 * sizeof(int));
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+}
+
 int main()
 {
 	//test1();
-	test2();
+	//test2();
+	test3();
 
 	return 0;
 }
+
+

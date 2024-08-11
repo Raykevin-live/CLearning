@@ -4,4 +4,6 @@
 #include <assert.h>
 
 void* MyMemcpy(void* dest, const void* src, size_t num);
+void* MyMemmove(void* dest, const void* src, size_t num);
+
 
