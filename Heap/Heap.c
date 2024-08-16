@@ -18,6 +18,7 @@ void HeapInit(HP* php)
 
 void HeapDestory(HP* php)
 {
+	assert(php);
 	free(php->a);
 	php->a = NULL;
 	php->size = 0;
@@ -30,6 +31,35 @@ void Swap(HPDataType* p1, HPDataType* p2)
 	*p1 = *p2;
 	*p2 = tmp;
 }
+
+void HeapInitArray(HP* php, int* a, int n)
+{
+	assert(php);
+
+	php->a = (HPDataType*)malloc(sizeof(HPDataType) * 4);
+	if (php->a == NULL)
+	{
+		perror("malloc fail");
+		return;
+	}
+
+	php->size = 0;
+	php->capacity = n;
+
+	//建堆
+	for (int i = (n - 1 - 1) / 2; i >= 0; i--)
+	{
+		ADjustDown(a, n, i);
+	}
+	int end = n - 1;
+	while (end > 0)
+	{
+		Swap(&a[end], &a[0]);
+		ADjustDown(a, end, 0);
+		--end;
+	}
+}
+
 
 //除了child,其他地方构成大堆/小堆
 void ADjustUp(HPDataType* a, int child)
@@ -81,13 +111,14 @@ void ADjustDown(HPDataType* a, int sz, int parent)
 	{
 		//选出左右孩子中大的一个
 		//这里child+1的判断在前，不要先访问再判断
-		if (child+1<sz && a[child + 1] > a[child])
+		//这里a[child + 1] > a[child] 建大堆用>， 建小堆用<
+		if (child + 1 < sz && a[child + 1] < a[child])
 		{
 			//这地方可能会越界
 			++child;
 		}
-
-		if (a[child] > a[parent])
+		//这里a[child] > a[parent] 建大堆用>， 建小堆用<
+		if (a[child] < a[parent])
 		{
 			//Swap(&a[child], a[a[parent]]);  //你的这里写的就是有问题的哦
 			Swap(&a[child], &a[parent]);
