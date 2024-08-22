@@ -49,6 +49,38 @@ void TestQuickSort()
 	PrintArray(a, sizeof(a) / sizeof(a[0]));
 }
 
+void TestQuickSortNonR()
+{
+	int a[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+	PrintArray(a, sizeof(a) / sizeof(a[0]));
+	QuickSortNonR(a, 0, (sizeof(a) / sizeof(a[0])) - 1);
+	PrintArray(a, sizeof(a) / sizeof(a[0]));
+}
+		
+void TestMergeSort()
+{
+	int a[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+	PrintArray(a, sizeof(a) / sizeof(a[0]));
+	MergeSort(a, sizeof(a) / sizeof(a[0]));
+	PrintArray(a, sizeof(a) / sizeof(a[0]));
+}
+
+void TestMergeSortNonR()
+{
+	int a[] = { 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+	PrintArray(a, sizeof(a) / sizeof(a[0]));
+	MergeSortNonR(a, sizeof(a) / sizeof(a[0]));
+	PrintArray(a, sizeof(a) / sizeof(a[0]));
+}
+
+void TestCountSort()
+{
+	int a[] = { 20, 24, 20, 19, 5, 30, 24, 25, 19, 33, 35,33};
+	PrintArray(a, sizeof(a) / sizeof(a[0]));
+	CountSort(a, sizeof(a) / sizeof(a[0]));
+	PrintArray(a, sizeof(a) / sizeof(a[0]));
+}
+
 int main()
 {
 	srand((unsigned int)time(NULL));
@@ -57,7 +89,11 @@ int main()
 	//TestSelectSort();
 	//TestHeapSortSort();
 	//TestBubbleSortSort();
-	TestQuickSort();
+	//TestQuickSort();
+	//TestQuickSortNonR();
+	//TestMergeSort();
+	//TestMergeSortNonR();
+	TestCountSort();
 
 	return 0;
 }
