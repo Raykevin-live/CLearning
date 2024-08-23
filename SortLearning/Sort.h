@@ -24,6 +24,8 @@ int PartSort1(int* a, int left, int right);//hoare版
 int PartSort2(int* a, int left, int right);//挖坑版
 int PartSort3(int* a, int left, int right);//前后指针
 void QuickSort(int* a, int left, int right);
+void QuickSortPlus(int* a, int left, int right);//三路划分优化
+
 //改非递归
 void QuickSortNonR(int* a, int left, int right);
 

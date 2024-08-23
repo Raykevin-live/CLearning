@@ -355,6 +355,8 @@ int PartSort3(int* a, int left, int right)
 	return keyi;
 }
 
+
+//二路划分法(基本方法-- 数据大量重复时速度会降到O(N^2))
 void QuickSort(int* a, int left, int right)
 {
 	//递归结束条件
@@ -377,6 +379,63 @@ void QuickSort(int* a, int left, int right)
 	else
 	{
 		InsertSort(a + left, right - left +1);
+	}
+}
+
+//三路划分法
+void QuickSortPlus(int* a, int left, int right)
+{
+	//递归结束条件
+	if (left >= right)
+	{
+		return;
+	}
+	//三数取中
+	int midi = GetMidNumi(a, left, right);
+	if (midi != left)
+	{
+		Swap(&a[left], &a[midi]);
+	}
+
+	//记录begin, end 位置
+	int begin = left;
+	int cur = left + 1;
+	int end = right;
+
+	int key = a[begin];
+	int keyi = begin;
+
+	while (cur <= right)
+	{
+		if (a[cur] < key)
+		{
+			Swap(&a[left], &a[cur]);
+			left++;
+			cur++;
+		}
+		else if (a[cur] > key)
+		{
+			Swap(&a[cur], &a[right]);
+			right--;
+		}
+		else //a[cur] == key
+		{
+			cur++;
+		}
+	}
+
+	//小区间优化 -- 小区间使用插入排序
+	//这个数字不能太大，否则没有意义
+	if ((end - begin + 1) > 10)
+	{
+		//[begin, left-1] [left, right] [right+1, end]
+
+		QuickSort(a, begin, left - 1);
+		QuickSort(a, right+1, end);
+	}
+	else
+	{
+		InsertSort(a + left, right - left + 1);
 	}
 }
 
