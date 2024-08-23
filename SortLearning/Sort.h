@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-#include "Stack.h"
 #include <string.h>
 
-//时间种子
+#define K 3
+#define RADIX 10
 
 void PrintArray(int* a, int n);
 
@@ -36,3 +36,5 @@ void MergeSortNonR(int* a, int n);
 //非比较排序
 //计数排序
 void CountSort(int* a, int n);
+//基数排序
+void RadixSort(int* a, int left, int right);

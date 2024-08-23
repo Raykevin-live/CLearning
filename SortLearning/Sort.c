@@ -1,5 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "Sort.h"
+#include "Stack.h"
+#include "Queue.h"
 
 void PrintArray(int* a, int n)
 {
@@ -127,6 +129,7 @@ void SelectSort(int* a, int n)
 		{
 			maxi = mini;
 		}
+
 		Swap(&a[right], &a[maxi]);
 
 		left++;
@@ -245,7 +248,7 @@ int GetMidNumi(int* a, int left, int right)
 	}
 }
 
-//快排 O(Nlog(N))
+//快排 O(Nlog(N)) 最慢O(N^2)
 //hoare版本
 int PartSort1(int* a, int left, int right)
 {
@@ -426,7 +429,8 @@ void _MergeSort(int* a, int begin, int end, int* tmp)
 	int i = begin;
 	while (begin1 <= end1 && begin2 <= end2)
 	{
-		if (a[begin1] < a[begin2])
+		//begin1<=begin2，可以做到稳定
+		if (a[begin1] <= a[begin2])
 		{
 			tmp[i++] = a[begin1++];
 		}
@@ -522,7 +526,8 @@ void MergeSortNonR(int* a, int n)
 			int j = i;
 			while (begin1 <= end1 && begin2 <= end2)
 			{
-				if (a[begin1] < a[begin2])
+				//begin1<=begin2时可以做到稳定
+				if (a[begin1] <= a[begin2])
 				{
 					tmp[j++] = a[begin1++];
 				}
@@ -599,3 +604,76 @@ void CountSort(int* a, int n)
 	return;
 }
 
+
+int GetKey(int value, int k)
+{
+	int key = 0;
+	while (k >= 0)
+	{
+		key = value % 10;
+		value /= 10;
+		--k;
+	}
+	return key;
+}
+
+void Distribute(int* a, int left, int right, int k, Queue* Qu[10])
+{
+	for (int i = left; i <= right; ++i)
+	{
+		int key = GetKey(a[i], k);
+		//入队 ,写错了
+		QueuePush(Qu[key], a[i]);		
+	}
+}
+
+void Collect(int* a, Queue* Qu[10])
+{
+	int k = 0;
+	for (int i = 0; i < RADIX; i++)
+	{
+		while (!QueueEmpty(Qu[i]))
+		{
+			a[k++] = QueueFront(Qu[i]);
+			QueuePop(Qu[i]);
+		}
+	}
+}
+
+//基数排序，先进先出用队列
+void RadixSort(int* a, int left, int right)
+{
+	Queue q0, q1, q2, q3, q4, q5, q6, q7, q8, q9;
+	//初始化
+	QueueInit(&q0);
+	QueueInit(&q1);
+	QueueInit(&q2);
+	QueueInit(&q3);
+	QueueInit(&q4);
+	QueueInit(&q5);
+	QueueInit(&q6);
+	QueueInit(&q7);
+	QueueInit(&q8);
+	QueueInit(&q9);
+	//建数组
+	Queue* Qu[10] = {&q0 ,&q1, &q2, &q3, &q4, &q5, &q6, &q7, &q8, &q9 };
+
+	for (int i = 0; i < K; i++)
+	{
+		//分发数据
+		Distribute(a, left, right, i, Qu);
+		//回收数据
+		Collect(a, Qu);
+	}
+
+	QueueDestory(&q0);
+	QueueDestory(&q1);
+	QueueDestory(&q2);
+	QueueDestory(&q3);
+	QueueDestory(&q4);
+	QueueDestory(&q5);
+	QueueDestory(&q6);
+	QueueDestory(&q7);
+	QueueDestory(&q8);
+	QueueDestory(&q9);
+}

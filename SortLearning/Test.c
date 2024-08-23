@@ -1,5 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include "Sort.h"
+#include "Stack.h"
+#include "Queue.h"
 
 void TestInsertSort()
 {
@@ -81,6 +83,13 @@ void TestCountSort()
 	PrintArray(a, sizeof(a) / sizeof(a[0]));
 }
 
+void TestRadixSort()
+{
+	int a[] = { 278, 109, 63, 930, 589, 184, 505, 269, 8, 83};
+	PrintArray(a, sizeof(a) / sizeof(a[0]));
+	RadixSort(a, 0, sizeof(a) / sizeof(a[0]) - 1);
+	PrintArray(a, sizeof(a) / sizeof(a[0]));
+}
 int main()
 {
 	srand((unsigned int)time(NULL));
@@ -93,7 +102,7 @@ int main()
 	//TestQuickSortNonR();
 	//TestMergeSort();
 	//TestMergeSortNonR();
-	TestCountSort();
-
+	//TestCountSort();
+	TestRadixSort();
 	return 0;
 }
