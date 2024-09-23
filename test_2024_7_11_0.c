@@ -1,5 +1,7 @@
 #include <stdio.h>
-
+#include <stddef.h>
+//引用offsetof 函数
+ 
 //用宏实现offsetof
 typedef struct S
 {
